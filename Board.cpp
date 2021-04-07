@@ -3,15 +3,6 @@
 
 using namespace std;
 
-//Chech that the input is not out of bound
-void test_input(u_int row, u_int col)
-{
-    if(row < 0 || col < 0)
-    {
-        throw out_of_range("Board starts at 0,0");
-    }
-}
-
 void ariel::Board::first_board_size(u_int row, u_int col, ariel::Direction d, u_int msglen)
 {
     this->top = row;
@@ -123,7 +114,6 @@ void ariel::Board::post_message(u_int row, u_int col, Direction d, string const 
 
 namespace ariel {
     void Board::post(u_int row, u_int column, Direction direction, std::string const message) {
-        test_input(row, column);
         //If first call to board, make my life easier and do it in 2 nice build functions.
         if(!chars)
         {
@@ -142,7 +132,6 @@ namespace ariel {
     }
 
     std::string Board::read(u_int row,u_int column, Direction direction, u_int length) {
-        test_input(row, column);
         string s = "";
         for(u_int i = 0; i < length; i++)
         {
